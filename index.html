@@ -6,10 +6,19 @@
     <title>For My Love 💖</title>
     <style>
         body {
-            background-color: #ffdde1;
+            background-color: black;
             text-align: center;
             font-family: 'Arial', sans-serif;
-            color: #b30000;
+            color: red;
+        }
+        .heart {
+            font-size: 100px;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
         .container {
             margin-top: 100px;
@@ -23,6 +32,7 @@
             margin: 10px;
             cursor: pointer;
             border-radius: 10px;
+            position: relative;
         }
         .hidden {
             display: none;
@@ -34,6 +44,17 @@
             width: 50%;
             border-radius: 15px;
             box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+            color: black;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 50%;
+            border-radius: 15px;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+            color: black;
+            text-align: center;
         }
         .gallery img {
             width: 200px;
@@ -45,37 +66,60 @@
 </head>
 <body>
     <div class="container">
-        <h1>Do you love me? 💕</h1>
+        <div class="heart">❤️</div>
+        <h1>Hi Tinku Baby, Do you love me? 😊</h1>
+        <button id="yes-btn" class="btn" onclick="moveButton()">Yes</button>
+    </div>
+    
+    
+    <div id="smile-step" class="hidden love-letter">
+        <h2>Smile for me 😊 and click Yes again!</h2>
         <button class="btn" onclick="showLoveLetter()">Yes</button>
+    </div>
+
+    <div class="card">
+        <h2>Our Present & Future Together ❤️</h2>
+        <img src="your-present-photo.jpg" alt="Our Present">
+        <img src="your-old-age-photo.jpg" alt="Growing Old Together">
+        <p>I wanted to grow old with you and love you from the bottom of my heart.  <p>But even if that's not possible, I will always be there for you whenever you need me, in whatever situation.</p></p>
     </div>
     
     <div id="love-letter" class="hidden love-letter">
-        <h2>My Love Letter to You 💌</h2>
-        <p>My dearest love,</p>
-        <p>You are the most wonderful thing that has ever happened to me. Every moment with you is magical, and I cherish you more than words can say. Happy Valentine's Day! ❤️</p>
-        <p>Forever yours,</p>
-        <p><strong>Your Love</strong></p>
+        <h2>I Love You 💌</h2>
+        <p>Thank you for coming into my life and making my life colorful.</p>
+        <p>I want you to keep smiling always. 💖</p>
+        <h2>Happy Valentine's Day! 🌹</h2>
+        <p>Thank you for being my Valentine.</p>
     </div>
     
     <div id="gallery" class="hidden">
-        <h2>Our Beautiful Memories 📸</h2>
+        <h2>These are the best memories of my life 📸</h2>
         <div class="gallery">
-            <img src="https://github.com/Divyashree-Naidu/valentine-website/blob/main/IMG-20241225-WA0148.jpg?raw=true" alt="Memory 1">
-            <img src="https://raw.githubusercontent.com/Divyashree-Naidu/valentine-website/main/IMG-20241225-WA0168-1.jpg" alt="Memory 2">
-            <img src="https://raw.githubusercontent.com/Divyashree-Naidu/valentine-website/main/IMG-20241225-WA0405.jpg" alt="Memory 3">
+            <img src="your-present-photo1.jpg" alt="Present Memory 1">
+            <img src="your-present-photo2.jpg" alt="Present Memory 2">
+            <img src="your-future-old-photo.jpg" alt="Growing Old Together">
+            <img src="your-memory-photo1.jpg" alt="Memory 1">
+            <img src="your-memory-photo2.jpg" alt="Memory 2">
         </div>
     </div>
     
-    <audio id="love-song" loop>
-        <source src="your-favorite-song.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    
     <script>
+        let clickCount = 0;
+        function moveButton() {
+            let btn = document.getElementById('yes-btn');
+            clickCount++;
+            if (clickCount <= 3) {
+                btn.style.position = 'absolute';
+                btn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+                btn.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+            } else {
+                btn.classList.add('hidden');
+                document.getElementById('smile-step').classList.remove('hidden');
+            }
+        }
         function showLoveLetter() {
             document.getElementById('love-letter').classList.remove('hidden');
             document.getElementById('gallery').classList.remove('hidden');
-            document.getElementById('love-song').play();
         }
     </script>
 </body>
