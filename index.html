@@ -104,28 +104,30 @@
         </div>
     </div>
     
-    <script>
-        let clickCount = 0;
-        function moveButton() {
-            let btn = document.getElementById('yes-btn');
-            clickCount++;
-            if (clickCount <= 3) {
-                btn.style.position = 'absolute';
-                btn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-                btn.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-            } else {
-                btn.classList.add('hidden');
-                document.getElementById('smile-step').classList.remove('hidden');
-            }
+<script>
+    let clickCount = 0;
+    function moveButton() {
+        let btn = document.getElementById('yes-btn');
+        clickCount++;
+        if (clickCount <= 3) {
+            btn.style.position = 'absolute';
+            btn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            btn.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+        } else {
+            btn.classList.add('hidden');
+            document.getElementById('smile-step').classList.remove('hidden');
         }
-        function showPresentFuture() {
-            document.getElementById('smile-step').classList.add('hidden');
-            document.getElementById('present-future').classList.remove('hidden');
-            setTimeout(() => {
-                document.getElementById('love-letter').classList.remove('hidden');
-                document.getElementById('gallery').classList.remove('hidden');
-            }, 3000);
-        }
-    </script>
+    }
+
+    function showPresentFuture() {
+        document.getElementById('smile-step').classList.add('hidden');
+        document.getElementById('present-future').classList.remove('hidden');
+
+        setTimeout(() => {
+            document.getElementById('love-letter').classList.remove('hidden');
+            document.getElementById('gallery').classList.remove('hidden');
+        }, 3000);
+    }
+</script>
 </body>
 </html>
