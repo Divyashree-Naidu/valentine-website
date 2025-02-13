@@ -8,12 +8,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         
         body {
-            background: linear-gradient(to right, #ff7eb3, #ff758c);
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
             text-align: center;
             font-family: 'Poppins', sans-serif;
             color: white;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
         .heart {
             font-size: 100px;
@@ -23,6 +24,14 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.2); }
             100% { transform: scale(1); }
+        }
+        .parallax {
+            background-image: url('your-background-image.jpg');
+            min-height: 400px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         .container {
             margin-top: 100px;
@@ -36,10 +45,11 @@
             margin: 10px;
             cursor: pointer;
             border-radius: 10px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .btn:hover {
             transform: scale(1.1);
+            box-shadow: 0px 4px 15px rgba(255, 77, 109, 0.5);
         }
         .hidden {
             display: none;
@@ -54,23 +64,40 @@
             box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
             color: black;
             text-align: center;
+            animation: fadeIn 1s;
         }
-        .gallery img, .card img {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            margin: 10px auto;
-            display: block;
-            border-radius: 15px;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-        .gallery {
+        .present-future-images {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .present-future-images img {
+            width: 45%;
+            max-width: 250px;
+            border-radius: 15px;
+            transition: transform 0.5s;
+        }
+        .present-future-images img:hover {
+            transform: scale(1.1);
+        }
+        .lyrics {
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
+    <div class="parallax"></div>
     <div class="container">
         <div class="heart">❤️</div>
         <h1>Hi Baby, Do you love me? 😊</h1>
@@ -84,8 +111,10 @@
     
     <div id="present-future" class="hidden card">
         <h2>Our Present & Future Together ❤️</h2>
-        <img src="https://github.com/Divyashree-Naidu/valentine-website/blob/main/IMG-20250213-WA0008.jpg?raw=true" alt="Our Present">
-        <img src="https://github.com/Divyashree-Naidu/valentine-website/blob/main/IMG-20250213-WA0008(1).jpg?raw=true" alt="Growing Old Together">
+        <div class="present-future-images">
+            <img src="https://github.com/Divyashree-Naidu/valentine-website/blob/main/IMG-20250213-WA0008.jpg?raw=true" alt="Our Present">
+            <img src="https://github.com/Divyashree-Naidu/valentine-website/blob/main/IMG-20250213-WA0008(1).jpg?raw=true" alt="Growing Old Together">
+        </div>
         <p>I wanted to grow old with you and love you from the bottom of my heart.</p>
        <p>But even if that's not possible, I will always be there for you whenever you need me, in whatever situation.</p>
     </div>
@@ -97,16 +126,15 @@
         <h2>Happy Valentine's Day! 🌹</h2>
         <p>Thank you for being my Valentine.</p>
     </div>
-    
-    <div id="gallery" class="hidden">
-        <h2>These are the best memories of my life 📸</h2>
-        <div class="gallery">
-            <img src="your-present-photo1.jpg" alt="Present Memory 1">
-            <img src="your-present-photo2.jpg" alt="Present Memory 2">
-            <img src="your-future-old-photo.jpg" alt="Growing Old Together">
-            <img src="your-memory-photo1.jpg" alt="Memory 1">
-            <img src="your-memory-photo2.jpg" alt="Memory 2">
-        </div>
+
+    <div class="lyrics">
+        <h2>Jathaga Nuvvunte 🎶</h2>
+        <p>"Prapancham teleede jathaga nuvvu unte,</p>
+        <p>Pramadame anede ite raade..."</p>
+        <audio controls>
+            <source src="your-song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
     
     <script>
@@ -128,7 +156,6 @@
             document.getElementById('present-future').classList.remove('hidden');
             setTimeout(() => {
                 document.getElementById('love-letter').classList.remove('hidden');
-                document.getElementById('gallery').classList.remove('hidden');
             }, 3000);
         }
     </script>
